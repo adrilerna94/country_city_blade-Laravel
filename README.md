@@ -1,4 +1,4 @@
-# Proyecto CRUD de City y Country
+# BLADE ➡️ CRUD de City y Country
 
 Este proyecto implementa las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para las entidades **City** y **Country** utilizando formularios. El proyecto se construye desde cero sin necesidad de relaciones entre las tablas, y se utilizará **Blade** para las vistas.
 
