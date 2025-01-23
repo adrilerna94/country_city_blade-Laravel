@@ -12,9 +12,9 @@ class Country extends Model
 
     protected $table = 'country';
     protected $primaryKey = 'Code';
-    protected $incrementing = false;
+    public $incrementing = false;
     protected $keyType = 'string';
-    protected $timestamps = false;
+    public $timestamps = false;
     protected $fillable = [
         'Code',
         'Name',
