@@ -32,4 +32,8 @@ class Country extends Model
         'Capital',
         'Code2'
     ];
+    public function cities()
+    {
+        return $this->hasMany(City::class, 'CountryCode', 'Code');
+    }
 }
