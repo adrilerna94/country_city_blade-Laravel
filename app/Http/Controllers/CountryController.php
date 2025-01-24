@@ -29,7 +29,7 @@ class CountryController extends Controller
      */
     public function create(): View
     {
-        // return view('countries.create');
+        return view('countries.create');
     }
 
     /**
@@ -39,9 +39,9 @@ class CountryController extends Controller
     {
         // antes debería pasar middleware de validación
         $country = Country::create($request->all());
-        return response()->json($country, 201);
-        // return redirect()->route('countries.index')
-        //                  ->with('success', 'Country created sucessfully.');
+        return redirect()->route('countries.index')
+                          ->with('success', 'Country created sucessfully.');
+        //return response()->json($country, 201);
     }
 
     /**
@@ -50,8 +50,8 @@ class CountryController extends Controller
     public function show(Country $country): View
     {
         $country = Country::findOrFail($country->Code);
-        return response()->json($country, 200);
-        // return view('countries.show', compact('country'));
+        //return response()->json($country, 200);
+        return view('countries.show', compact('country'));
     }
 
     /**
@@ -59,7 +59,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country): View
     {
-        // return view('countries.edit', compact('country'));
+        return view('countries.edit', compact('country'));
     }
 
     /**
