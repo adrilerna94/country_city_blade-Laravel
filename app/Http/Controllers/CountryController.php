@@ -6,6 +6,7 @@ use App\Models\Country;
 use App\Http\Requests\StoreCountryRequest;
 use App\Http\Requests\UpdateCountryRequest;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 // Asegúrate de usar la clase correcta para vistas
 
@@ -81,7 +82,7 @@ class CountryController extends Controller
     public function destroy(Country $country): RedirectResponse
     {
         // eliminar refistros relacionados
-        $country->cities->delete();
+        $country->cities()->delete();
 
         // eliminamos registro principal : country
         $country->delete();
@@ -90,5 +91,4 @@ class CountryController extends Controller
         return redirect()->route('countries.index')
                          ->with('success', 'Country deleted successfully');
     }
-
 }
