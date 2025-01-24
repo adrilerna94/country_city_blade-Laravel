@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Http\Requests\StoreCountryRequest;
 use App\Http\Requests\UpdateCountryRequest;
+use Illuminate\View\View;
+
+// Asegúrate de usar la clase correcta para vistas
 
 class CountryController extends Controller
 {
@@ -13,9 +16,12 @@ class CountryController extends Controller
      */
     public function index(): View
     {
-        $countries = Country::all();
-        return response()->json($countries, 200);
-        // return view('countries.index', compact('countries'));
+        // $countries = Country::all();
+        // return response()->json($countries, 200);
+        // $countries = Country::latest()->paginate(20); // latest ordena por created at updated at y no las tenemos
+        $countries = Country::orderBy('name', 'asc')->paginate(20); // orden segun column name de forma alfabética
+        return view('countries.index', compact('countries'))
+                    ->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     /**
