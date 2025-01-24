@@ -80,13 +80,13 @@ class CountryController extends Controller
      */
     public function destroy(Country $country): RedirectResponse
     {
-        // // Verificar si hay ciudades asociadas con el país
-        // if ($country->cities()->count() > 0) {
-        //     return redirect()->route('countries.index')
-        //                      ->with('error', 'Cannot delete country. It has associated cities.');
-        // }
-        // Eliminar el país
+        // eliminar refistros relacionados
+        $country->cities->delete();
+
+        // eliminamos registro principal : country
         $country->delete();
+
+        // redireccionamos
         return redirect()->route('countries.index')
                          ->with('success', 'Country deleted successfully');
     }
