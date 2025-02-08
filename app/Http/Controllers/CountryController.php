@@ -70,10 +70,9 @@ class CountryController extends Controller
     {
         // Previamente validado en el middleware
         $updatedCountry = $country->update($request->all());
-        return response()->json($updatedCountry, 200);
-        /* return redirect()->route('countries.index')
-                            ->with('success', 'Product updated successfully');
-        */
+        //return response()->json($updatedCountry, 200);
+        return redirect()->route('countries.index')
+                            ->with('success', 'Country updated successfully');
     }
 
     /**
